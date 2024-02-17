@@ -15,8 +15,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/yandexmobile/metrica-sdk-ios", "4.0.0"..<"5.0.0"),
-        .package(url: "https://github.com/divkit/divkit-ios", exact: "28.13.0")
+        .package(url: "https://github.com/yandexmobile/metrica-sdk-ios", "4.0.0"..<"5.0.0")
     ],
     targets: [
         .target(
@@ -24,8 +23,8 @@ let package = Package(
             dependencies: [
                 .target(name: "YandexMobileAds"),
                 .target(name: "YandexMobileAdsInstream"),
-                .product(name: "YandexMobileMetrica", package: "metrica-sdk-ios"),
-                .product(name: "DivKit", package: "divkit-ios")
+                .target(name: "DivKit"),
+                .product(name: "YandexMobileMetrica", package: "metrica-sdk-ios")
             ],
             resources: [
                 .process("Resources")
@@ -59,6 +58,10 @@ let package = Package(
             name: "YandexMobileAdsInstream",
             url: "https://ads-mobile-sdk.s3.yandex.net/YandexMobileAdsInstream/0.24.0/spm/07e52c3d-fa5f-4c17-86bc-39182bb494ff.zip",
             checksum: "e508ff29789c9dc0d7587518cf04ee6271ac48d97a32d3bdae7d7d2bbf7df91c"
+        ),
+        .binaryTarget(
+            name: "DivKit",
+            path: "Binary/DivKit/DivKit.xcframework"
         )
     ]
 )
